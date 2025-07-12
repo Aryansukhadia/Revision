@@ -45,46 +45,46 @@ import sys
 # The function accepts STRING stn as parameter.
 #
 
-# def pureString(stn):
-#     MOD = 10**9 + 7
-#     n = len(stn)
-#     total = 0
+def pureString(stn):
+    MOD = 10**9 + 7
+    n = len(stn)
+    total = 0
 
-#     # Precompute prefix count for each position
-#     prefix_freq = [0] * 26
-#     freq_prefix_list = []
-#     for ch in stn:
-#         prefix_freq[ord(ch) - ord('a')] += 1
-#         freq_prefix_list.append(prefix_freq[:])  # store copy
+    # Precompute prefix count for each position
+    prefix_freq = [0] * 26
+    freq_prefix_list = []
+    for ch in stn:
+        prefix_freq[ord(ch) - ord('a')] += 1
+        freq_prefix_list.append(prefix_freq[:])  # store copy
 
-#     # Precompute suffix count from each position
-#     suffix_freq = [0] * 26
-#     freq_suffix_list = [None] * n
-#     for i in range(n-1, -1, -1):
-#         suffix_freq[ord(stn[i]) - ord('a')] += 1
-#         freq_suffix_list[i] = suffix_freq[:]
+    # Precompute suffix count from each position
+    suffix_freq = [0] * 26
+    freq_suffix_list = [None] * n
+    for i in range(n-1, -1, -1):
+        suffix_freq[ord(stn[i]) - ord('a')] += 1
+        freq_suffix_list[i] = suffix_freq[:]
 
-#     # Try all substrings s[i:j+1] to remove
-#     for i in range(n):
-#         for j in range(i, n):
-#             # Remaining = s[0:i] + s[j+1:]
-#             remaining_freq = [0] * 26
+    # Try all substrings s[i:j+1] to remove
+    for i in range(n):
+        for j in range(i, n):
+            # Remaining = s[0:i] + s[j+1:]
+            remaining_freq = [0] * 26
 
-#             if i > 0:
-#                 for k in range(26):
-#                     remaining_freq[k] += freq_prefix_list[i-1][k]
-#             if j + 1 < n:
-#                 for k in range(26):
-#                     remaining_freq[k] += freq_suffix_list[j+1][k]
+            if i > 0:
+                for k in range(26):
+                    remaining_freq[k] += freq_prefix_list[i-1][k]
+            if j + 1 < n:
+                for k in range(26):
+                    remaining_freq[k] += freq_suffix_list[j+1][k]
 
-#             # Count distinct characters
-#             distinct = sum(1 for val in remaining_freq if val > 0)
-#             if distinct <= 1:
-#                 total = (total + 1) % MOD
+            # Count distinct characters
+            distinct = sum(1 for val in remaining_freq if val > 0)
+            if distinct <= 1:
+                total = (total + 1) % MOD
 
-#     return total
+    return total
 
-# if __name__ == '__main__':
-#     stn = input()
-#     result = pureString(stn)
-#     print(str(result))
+if __name__ == '__main__':
+    stn = input()
+    result = pureString(stn)
+    print(str(result))
