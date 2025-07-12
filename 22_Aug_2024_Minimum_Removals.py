@@ -47,4 +47,5 @@ if __name__ == '__main__':
     result = minimum_removals(nums)
 
     print(str(result))
-# This code defines a function to calculate the minimum number of removals required to ensure that the minimum and maximum elements of an array are not adjacent.
+# This code defines a function to calculate the minimum number of removals required 
+# to ensure that the minimum and maximum elements of an array.
