@@ -1,46 +1,3 @@
-#!/bin/python3
-
-import math
-import os
-import random
-import re
-import sys
-
-#
-# Complete the 'countVisitedShops' function below.
-# 
-# The function is expected to return an INTEGER ARRAY.
-# The function accepts INTEGER ARRAY paths as parameter.
-#
-
-def countVisitedShops(paths):
-    visited = set()
-    current_position = 0
-    visited.add(current_position)
-
-    result = []
-
-    for move in paths:
-        current_position += move
-        visited.add(current_position)
-        result.append(len(visited))  # Count of unique shops visited so far
-
-    return result
-
-if __name__ == '__main__':
-    paths_count = int(input().strip())
-
-    paths = []
-
-    for _ in range(paths_count):
-        paths_item = int(input().strip())
-        paths.append(paths_item)
-
-    result = countVisitedShops(paths)
-
-    print('\n'.join(map(str, result)))
-
-
 # Count Of Shops
 # subject Codingcasino
 # Description
@@ -121,3 +78,46 @@ if __name__ == '__main__':
 # 4
 # 5
 # Execution time limit
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'countVisitedShops' function below.
+# 
+# The function is expected to return an INTEGER ARRAY.
+# The function accepts INTEGER ARRAY paths as parameter.
+#
+
+def countVisitedShops(paths):
+    visited = set()
+    current_position = 0
+    visited.add(current_position)
+
+    result = []
+
+    for move in paths:
+        current_position += move
+        visited.add(current_position)
+        result.append(len(visited))  # Count of unique shops visited so far
+
+    return result
+
+if __name__ == '__main__':
+    paths_count = int(input().strip())
+
+    paths = []
+
+    for _ in range(paths_count):
+        paths_item = int(input().strip())
+        paths.append(paths_item)
+
+    result = countVisitedShops(paths)
+
+    print('\n'.join(map(str, result)))
+
+
