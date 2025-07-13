@@ -74,27 +74,27 @@
 # Expected output
 # 11
 
-# def minimumTimeRequired(k, files):
-#     files.sort(reverse=True)  # Big files first to prune faster
+def minimumTimeRequired(k, files):
+    files.sort(reverse=True)  # Big files first to prune faster
 
-#     def canDistribute(index, machines, limit):
-#         if index == len(files):
-#             return True
-#         for i in range(k):
-#             if machines[i] + files[index] <= limit:
-#                 machines[i] += files[index]
-#                 if canDistribute(index + 1, machines, limit):
-#                     return True
-#                 machines[i] -= files[index]
-#             if machines[i] == 0:
-#                 break
-#         return False
+    def canDistribute(index, machines, limit):
+        if index == len(files):
+            return True
+        for i in range(k):
+            if machines[i] + files[index] <= limit:
+                machines[i] += files[index]
+                if canDistribute(index + 1, machines, limit):
+                    return True
+                machines[i] -= files[index]
+            if machines[i] == 0:
+                break
+        return False
 
-#     left, right = max(files), sum(files)
-#     while left < right:
-#         mid = (left + right) // 2
-#         if canDistribute(0, [0] * k, mid):
-#             right = mid
-#         else:
-#             left = mid + 1
-#     return left
+    left, right = max(files), sum(files)
+    while left < right:
+        mid = (left + right) // 2
+        if canDistribute(0, [0] * k, mid):
+            right = mid
+        else:
+            left = mid + 1
+    return left
